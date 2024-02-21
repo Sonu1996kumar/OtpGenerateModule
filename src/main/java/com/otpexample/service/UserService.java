@@ -14,4 +14,16 @@ public class UserService {
         //Save the user to the database
         return userRepository.save(user);
     }
+//verify user exist in your db or not
+    public User getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        return user;
+
+    }
+
+    public void verifyEmail(User user) {
+        user.setEmailVerified(true);
+        userRepository.save(user);
+
+    }
 }
